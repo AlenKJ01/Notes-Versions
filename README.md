@@ -32,6 +32,16 @@ This project focuses on **clean backend architecture**, **API design**, and a **
 
 ---
 
+## 🌐 Live Application
+
+- **Frontend (Live UI):**  
+  https://notes-versions.onrender.com/static/index.html
+
+- **Backend API Base URL:**  
+  https://notes-versions.onrender.com/docs
+
+---
+
 ## 🧠 Application Workflow
 
 1. User registers or logs in
@@ -190,15 +200,19 @@ Open:
 
 - UI: http://127.0.0.1:8000/static/index.html
 
-## 🌍 Production Deployment
+## 🚀 Deployment
 
-- Platform: Render
+The application is deployed using **Render (Backend)** and **Neon (PostgreSQL)**.
 
-- Uses render.yaml
+- **Frontend:**  
+  Served as static files via FastAPI  
+  https://notes-versions.onrender.com/static/index.html
 
-- PostgreSQL managed DB
+- **Backend API:**  
+  https://notes-versions.onrender.com/docs
 
-- Automatic build & deploy
+- **Database:**  
+  PostgreSQL hosted on Neon
 
 ### Production command:
 ```
@@ -247,3 +261,4 @@ All protected routes require:
 ```
 Authorization: Bearer <token>
 ```
+
