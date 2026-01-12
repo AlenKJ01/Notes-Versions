@@ -1,0 +1,450 @@
+{
+  "info": {
+    "_postman_id": "166a758e-7d64-4ee7-9f96-5d48215c243a",
+    "name": "Notes App API",
+    "description": "API documentation for the Notes App built with FastAPI.\n\nFeatures:\n\n- JWT authentication\n    \n- Notes CRUD\n    \n- Version history\n    \n- Restore & delete versions\n    \n- Search notes\n    \n\nAll protected routes use an Authorization Bearer token.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "f1266eae-c5e8-4db8-b8d8-4d766f58ec29",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "5368c760-edf8-40fd-9b50-22f28fe28633",
+                "exec": [
+                  "pm.test(\"User registered\", () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "7f5ae497-4664-47b4-8c3e-e30bbec9f86b",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"alen@example.com\",\r\n  \"password\": \"alen\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "dc0a1e74-4861-4ed3-af59-6cc19604990f",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "d91e9bc1-8edb-407a-9136-02f68d3debe3",
+                "exec": [
+                  "pm.test(\"Login successful\", () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "const json = pm.response.json();\r",
+                  "pm.environment.set(\"token\", json.access_token);\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "e81799d4-39f0-411f-8faa-8b6021ae0665",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "alen@example.com",
+                  "type": "text",
+                  "uuid": "39bd73fb-afa0-4fd3-8d6f-14a45ec317b6"
+                },
+                {
+                  "key": "password",
+                  "value": "alen",
+                  "type": "text",
+                  "uuid": "6800f625-6346-450e-917c-91aa15524f72"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "ceae1dcf-8817-4bcd-94cd-0c5111937e06"
+    },
+    {
+      "name": "Notes",
+      "item": [
+        {
+          "name": "Create Note",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "6a42346b-861c-442c-bee0-f6b858bd6b9f",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "7f7078a7-3832-4826-a476-2cde5da71bf8",
+                "exec": [
+                  "pm.test(\"Note created\", () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "1aa6c28c-7e05-4548-894d-84536024fbde",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text",
+                "uuid": "40a3fd1c-b5be-4158-b18c-91160d24b856"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Grocery List\",\r\n  \"content\": \"Milk\\nEggs\\nRice\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/notes/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Notes",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ffc07b96-9b23-4469-bbe7-f1c090d2b399",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "d39751ad-0aca-4142-8638-36298155af6b",
+                "exec": [
+                  "pm.test(\"Notes fetched\", () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "  pm.expect(pm.response.json()).to.be.an(\"array\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "26b1d99c-a6aa-49d3-b6a1-d67a7b3aa2b9",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text",
+                "uuid": "2b2afea9-58d0-427b-b738-a9ece49bdf39"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/notes/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Note",
+          "id": "a71a53fe-1671-4e08-972b-7e1c83212852",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text",
+                "uuid": "f7cb6f19-9759-426d-91b2-bfda0f67893e"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/notes/19",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                "19"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Note",
+          "id": "c12ec52f-ad79-483d-a26d-fcea7552b9f4",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text",
+                "uuid": "d4752d34-2f6f-4fcb-8fb9-5a84232236ae"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Updated Grocery List\",\r\n  \"content\": \"Milk\\nEggs\\nRice\\nSugar\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/notes/19",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                "19"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Notes",
+          "id": "bcfadf8f-7970-4289-a35e-f87088f0327b",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text",
+                "uuid": "9fe91449-ea21-4c90-a99d-48a05446fb32"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/notes/?title=grocery",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "title",
+                  "value": "grocery"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "f0a03f16-9d22-4d4a-b960-f5f9c19089be"
+    },
+    {
+      "name": "Versions",
+      "item": [
+        {
+          "name": "List Versions",
+          "id": "f4ec0530-af51-42eb-8f6c-ba5c11fc2d00",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text",
+                "uuid": "9a9daf6d-cee2-47f7-b781-89204005d827"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/notes/19/versions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                "19",
+                "versions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Restore Version",
+          "id": "f7c21405-1ce4-4aaf-b93a-8323b79bd658",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text",
+                "uuid": "107bad0f-1b93-44a4-961d-4838005d957f"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/notes/19/versions/1/restore",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                "19",
+                "versions",
+                "1",
+                "restore"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Version",
+          "id": "0c98f270-4ba0-4fa3-a03f-82d7078a8af9",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text",
+                "uuid": "7327ee07-fef7-4ebb-ad08-077113df20a5"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/notes/19/versions/2",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notes",
+                "19",
+                "versions",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "e0caac73-7883-4605-94c5-461f8a500372"
+    }
+  ]
+}
