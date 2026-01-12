@@ -1,0 +1,438 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f7f7fb;
+  color: #020202;
+}
+
+.app-title {
+  font-weight: 900;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+.section-title {
+  font-weight: 700;
+}
+
+button {
+  font-weight: 700;
+}
+
+input,
+textarea {
+  font-weight: 500;
+}
+
+.auth-hint {
+  font-weight: 400;
+}
+
+
+/* App shell (centered phone) */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* App card (phone body) */
+.app-card {
+  width: 390px;
+  min-height: 650px;
+  background: linear-gradient(
+    180deg,
+    #bbd3da 0%,
+    #8cbce3 55%,
+    #498ed2 100%
+  );
+  border-radius: 22px;
+  padding: 15px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+/* Inputs (shared) */
+input,
+textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1.5px solid #8989cb;
+  background: #fafafe;
+  color: #020202;
+  outline: none;
+  transition: border-color 1s, box-shadow 1s;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9a9ab0;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #4922E5;
+  box-shadow: 0 0 0 3px rgba(73, 34, 229, 0.12);
+}
+
+/* Note title */
+.title-input {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* Note content */
+.content-input {
+  flex: 1;
+  resize: none;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.primary {
+  background: linear-gradient(135deg, #4922E5, #A556FB);
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.primary:hover {
+  opacity: 0.92;
+}
+
+.primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ghost {
+  background: transparent;
+  border: none;
+  color: #4922E5;
+  font-size: 14px;
+  padding: 0;
+}
+
+/* Sections */
+.section-title {
+  margin: 10px 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.version-info {
+  font-size: 13px;
+  color: #6f6f85;
+  margin-bottom: 10px;
+}
+
+/* Versions list */
+.version-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.version-list li {
+  background: #fafafe;
+  border: 1.5px solid #e3e3f8;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.version-list li strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.version-list button {
+  margin-top: 8px;
+  margin-right: 6px;
+  background: transparent;
+  border: 1.5px solid #A556FB;
+  color: #A556FB;
+  border-radius: 10px;
+  padding: 5px 12px;
+  font-size: 12px;
+}
+
+.version-list button:hover {
+  background: #A556FB;
+  color: white;
+}
+
+.version-list button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Create Note spacing */
+.create-note input {
+  margin-bottom: 08px;
+}
+
+.create-note textarea {
+  margin-bottom: 14px;
+  min-height: 80px;
+}
+
+/* Notes header */
+.notes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+/* Secondary button (Logout) */
+.secondary {
+  background: white;
+  border: 1.5px solid #4922E5;
+  color: #4922E5;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.secondary:hover {
+  background: #4922E5;
+  color: white;
+}
+
+/* Auth form spacing */
+.auth-form input {
+  margin-bottom: 14px;
+}
+
+.auth-form button {
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.auth-form #error {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #d93025;
+}
+
+/* Auth (Login/Register) */
+.auth-card {
+  justify-content: center;
+  text-align: center;
+}
+
+.app-title {
+  font-size: 30px;
+  font-weight: 999;
+  letter-spacing: 3px;
+  color: #003d8c;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 0 rgb(77, 105, 129);
+}
+
+.auth-card input {
+  margin-bottom: 14px;
+}
+
+.auth-hint {
+  font-size: 13px;
+  color: #6f6f85;
+  margin: 18px 0 8px;
+  text-align: center;
+}
+
+.register-btn {
+  font-size: 25px;
+  color: #003d8c;
+}
+
+.error-text {
+  margin-top: 12px;
+  color: #d93025;
+  font-size: 13px;
+  text-align: center;
+}
+
+
+/* Don’t have an account? */
+.helper-text {
+  font-size: 15px;
+  color: #6f6f85;
+  margin: 16px 0 6px;
+  text-align: center;
+}
+
+.app-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Create Note Text */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+button.small {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+/* Search container */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+/* Icon */
+.search-icon {
+  font-size: 18px;
+  color: #4b4369;
+  cursor: pointer;
+  user-select: none;
+}
+
+.search-input {
+  width: 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  padding: 4px 0;
+  transition: width 0.35s ease, border-color 0.35s ease;
+  color: #06061a;
+}
+
+/* 🔍 Expand on hover OR focus */
+.search-wrapper:hover .search-input,
+.search-input:focus {
+  width: 180px;
+  border-bottom-color: #000000;
+  padding-left: 10px;
+}
+
+/* 🔍 Placeholder styling */
+.search-input::placeholder {
+  color: #6d6dbd;
+  padding-left: 6px;
+}
+
+/* Version card (collapsed by default) */
+.version-card {
+  position: relative;
+  background: #fafafe;
+  border: 1.5px solid #e3e3f8;
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+/* Version title */
+.version-card strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+/* Snapshot title */
+.version-title {
+  font-size: 12px;
+  color: #6f6f85;
+  margin-bottom: 6px;
+}
+
+/* Action buttons row */
+.version-actions {
+  margin-top: 6px;
+}
+
+/* Preview container (hidden) */
+.version-preview {
+  margin-top: 10px;
+  background: #f4f4ff;
+  border: 1.5px solid #d9d9f0;
+  border-radius: 12px;
+
+  /* collapsed state */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    padding 0.2s ease;
+}
+
+/* Open preview */
+.version-preview.open {
+  max-height: 600px; 
+  opacity: 1;
+  padding: 12px;
+}
+
+/* Preview text box */
+.preview-text {
+  background: white;
+  border-radius: 8px;
+  padding-left: 10px;
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Metadata */
+.preview-meta {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #6f6f85;
+}
+
+/* Diff highlighting */
+.diff-added {
+  background: rgba(165, 86, 251, 0.25);
+  padding: 1px 3px;
+  border-radius: 4px;
+}

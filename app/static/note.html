@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Note</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+    <div class="app-card">
+      <div class="top-bar">
+        <button class="ghost" onclick="back()">← Back</button>
+      </div>
+
+      <input
+        id="note-title"
+        class="title-input"
+        placeholder="Note title"
+      />
+
+      <textarea
+        id="note-content"
+        class="content-input"
+        placeholder="Write your note..."
+      ></textarea>
+
+      <button class="primary" onclick="updateNote()">Update</button>
+      <div id="version-info" class="version-info"></div>
+
+      <h3 class="section-title">Versions</h3>
+      <ul id="versions" class="version-list"></ul>
+
+    </div>
+  </div>
+
+  <script src="/static/js/note.js"></script>
+</body>
+</html>

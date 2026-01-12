@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Notes – Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="app-card auth-card">
+
+      <h1 class="app-title">NOTES</h1>
+
+      <input id="email" type="email" placeholder="Email" />
+      <input id="password" type="password" placeholder="Password" />
+
+      <button class="primary" onclick="login()">Login</button>
+
+      <p class="auth-hint">Don't have an account?</p>
+      <button class="primary" onclick="register()">Register</button>
+
+
+      <p id="error" class="error-text"></p>
+
+      <script src="/static/js/auth.js"></script>
+    </div>
+  </div>
+</body>
+</html>
