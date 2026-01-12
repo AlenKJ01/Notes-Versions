@@ -24,9 +24,7 @@ This project focuses on **clean backend architecture**, **API design**, and a **
 
 ## 📸 Screenshots
 
-> Add screenshots here after uploading images to the repo
+![Login Page](screenshots/login.png)
+![Notes Page](screenshots/notes.png)
+![Version Preview](screenshots/note_versions.png)
 
-```text
-/screenshots/login.png
-/screenshots/notes.png
-/screenshots/note_versions.png
