@@ -164,7 +164,7 @@ project-notes/
 ## 🛠 Setup & Run (Local)
 ### 1️⃣ Clone the repo
 ```
-git clone <your-private-repo-url>
+git clone https://github.com/AlenKJ01/Notes-Versions.git
 cd project-notes
 ```
 ### 2️⃣ Create virtual environment
@@ -261,4 +261,5 @@ All protected routes require:
 ```
 Authorization: Bearer <token>
 ```
+
 
